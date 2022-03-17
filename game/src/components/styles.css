@@ -54,7 +54,7 @@
 .Combatant {
   width: 67px;
   height: 14px;
-  background: url() no-repeat no-repeat;
+  background: url("../images/combatant-plate.png") no-repeat no-repeat;
   position: absolute;
 }
 
@@ -166,22 +166,21 @@
   background: #582a79;
 }
 
-.Pizza {
+.Minion {
   position: absolute;
-  transform: scale(2);
-  background: url() no-repeat no-repeat;
+  transform: scale(0.2);
 }
-.Pizza[data-team="player"] {
-  bottom: 73px;
+.Minion[data-team="player"] {
+  bottom: -20px;
   left: 51px;
 }
-.Pizza[data-team="enemy"] {
-  top: 47px;
+.Minion[data-team="enemy"] {
+  top: -20px;
   right: 100px;
 }
-.Pizza[data-active="false"] {
+.Minion[data-active="false"] {
   opacity: 0;
 }
-.Pizza[data-active="true"] {
+.Minion[data-active="true"] {
   opacity: 1;
 }

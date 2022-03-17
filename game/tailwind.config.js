@@ -6,6 +6,7 @@ module.exports = {
     "./src/components/ConnectWallet.jsx",
     "./src/components/logic/TextMessage.js",
     "./src/components/Game.jsx",
+    "./src/logic/battle/Combatant.js",
   ],
   theme: {
     extend: {},
