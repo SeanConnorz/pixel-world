@@ -7,6 +7,7 @@ module.exports = {
     "./src/components/logic/TextMessage.js",
     "./src/components/Game.jsx",
     "./src/logic/battle/Combatant.js",
+    "./src/logic/TextMessage.js",
   ],
   theme: {
     extend: {},

@@ -11,9 +11,10 @@ export class TextMessage {
     //Create the element
     this.element = document.createElement("div");
     this.element.classList.add("TextMessage");
+    this.element.classList.add("z-10");
 
     this.element.innerHTML = `
-    <p class="TextMessage_p text-[0.3rem]">${this.text}</p>
+    <p class="TextMessage_p text-[0.3rem] z-10">${this.text}</p>
     <button class="text-[0.5rem]">Next</button>
     `;
 

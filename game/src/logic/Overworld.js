@@ -73,8 +73,8 @@ export class Overworld {
     minionTypes();
     window.OverworldMaps = {
       DemoRoom: {
-        lowerSrc: "../../images/metaverse/maps/DemoLower.png",
-        upperSrc: "../../images/metaverse/maps/DemoUpper.png",
+        lowerSrc: require("../images/DemoLower.png"),
+        upperSrc: require("../images/DemoUpper.png"),
         gameObjects: {
           hero: new Person({
             isPlayerControlled: true,
@@ -184,8 +184,6 @@ export class Overworld {
         },
       },
     };
-
-    console.log(window);
 
     this.startMap(window.OverworldMaps.DemoRoom);
 
