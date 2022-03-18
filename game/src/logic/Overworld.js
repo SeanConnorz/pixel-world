@@ -4,6 +4,7 @@ import { utils } from "./utils.js";
 import { Person } from "./Person.js";
 import { KeyPressListener } from "./KeyPressListener";
 import { minionTypes } from "./content/minions";
+import { loadActions } from "./content/actions";
 
 export class Overworld {
   constructor(config) {
@@ -71,6 +72,7 @@ export class Overworld {
   // initalizes game
   init() {
     minionTypes();
+    loadActions();
     window.OverworldMaps = {
       DemoRoom: {
         lowerSrc: require("../images/DemoLower.png"),

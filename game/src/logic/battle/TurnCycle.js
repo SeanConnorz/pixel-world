@@ -7,7 +7,36 @@ export class TurnCycle {
 
   async turn() {
     // Get the caster
-    const castId = this.battle.activeCombatants[this.currentTeam];
+    const casterId = this.battle.activeCombatants[this.currentTeam];
+    const caster = this.battle.combatants[casterId];
+
+    const enemyId =
+      this.battle.activeCombatants[
+        caster.team === "player" ? "enemy" : "player"
+      ];
+    const enemy = this.battle.combatants[enemyId];
+
+    const submission = await this.onNewEvent({
+      type: "submissionMenu",
+      caster,
+      enemy,
+    });
+
+    const resultingEvents = submission.action.success;
+    console.log("LOOKO", resultingEvents);
+    for (let i = 0; i < resultingEvents.length; i++) {
+      const event = {
+        ...resultingEvents[i],
+        submission,
+        action: submission.action,
+        caster,
+        target: submission.target,
+      };
+      await this.onNewEvent(event);
+    }
+
+    this.currentTeam = this.currentTeam === "player" ? "enemy" : "player";
+    this.turn();
   }
 
   async init() {

@@ -1,4 +1,5 @@
 import { TextMessage } from "../TextMessage";
+import { SubmissionMenu } from "./SubmissionMenu";
 
 export class BattleEvent {
   constructor(event, battle) {
@@ -7,6 +8,7 @@ export class BattleEvent {
   }
 
   textMessage(resolve) {
+    console.log(this.event.text);
     const message = new TextMessage({
       text: this.event.text,
       onComplete: () => {
@@ -15,6 +17,18 @@ export class BattleEvent {
     });
     const container = document.querySelector(".game-container");
     message.init(container);
+  }
+
+  submissionMenu(resolve) {
+    const menu = new SubmissionMenu({
+      caster: this.event.caster,
+      enemy: this.event.enemy,
+      onComplete: (submission) => {
+        // Submission what move to use, who to use it on
+        resolve(submission);
+      },
+    });
+    menu.init(this.battle.element);
   }
 
   init(resolve) {
