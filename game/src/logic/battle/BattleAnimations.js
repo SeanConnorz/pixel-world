@@ -23,5 +23,6 @@ export const loadBattleAnimations = () => {
       await utils.wait(100);
       onComplete();
     },
+    async glob(event, onComplete) {},
   };
 };

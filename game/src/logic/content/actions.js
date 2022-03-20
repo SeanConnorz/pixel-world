@@ -19,11 +19,11 @@ export const loadActions = () => {
         { type: "stateChange", status: { type: "saucy", expiresIn: 3 } },
       ],
     },
-    saucyStatus: {
+    clumsyStatus: {
       name: "Olive Oil",
-      targetType: "friendly",
       success: [
         { type: "textMessage", text: "{CASTER} uses {ACTION}!" },
+        { type: "animation", animation: "glob", color: "#dafd2a" },
         { type: "stateChange", status: { type: "clumbsy", expiresIn: 3 } },
       ],
     },

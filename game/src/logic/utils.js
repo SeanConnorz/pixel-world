@@ -38,6 +38,9 @@ export const utils = {
       }, ms);
     });
   },
+  randomFromArray(arr) {
+    return arr[Math.floor(Math.random() * arr.length)];
+  },
   emitEvent(name, detail) {
     const event = new CustomEvent(name, {
       detail,

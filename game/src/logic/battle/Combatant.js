@@ -1,3 +1,5 @@
+import { utils } from "../utils";
+
 export class Combatant {
   constructor(config, battle) {
     Object.keys(config).forEach((key) => {
@@ -83,7 +85,10 @@ export class Combatant {
   }
 
   getReplacedEvents(originalEvents) {
-    if (this.status?.type === "clumbsy") {
+    if (
+      this.status?.type === "clumbsy" &&
+      utils.randomFromArray([true, false, false])
+    ) {
       return [
         {
           type: "textMessage",

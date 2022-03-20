@@ -4,6 +4,7 @@ import Game from "./Game";
 
 import { useState } from "react";
 import "./styles.css";
+import "./battle.css";
 
 export default function Metaverse(props) {
   const { CONTRACT_ADDRESS, currentAccount, connectWallet } = props;

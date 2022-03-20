@@ -9,14 +9,14 @@ export const minionTypes = () => {
       type: window.MinionTypes.boy,
       src: require("../../images/c001.png"),
       logo: "https://upload.wikimedia.org/wikipedia/commons/5/53/Wikimedia-logo.png",
-      actions: ["saucyStatus", "damage1"],
+      actions: ["clumsyStatus", "damage1"],
     },
     s002: {
       name: "npc",
       type: window.MinionTypes.boy,
       src: require("../../images/c001.png"),
       logo: "https://upload.wikimedia.org/wikipedia/commons/5/53/Wikimedia-logo.png",
-      actions: ["saucyStatus", "damage1"],
+      actions: ["clumsyStatus", "damage1"],
     },
   };
 };
