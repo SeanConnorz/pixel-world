@@ -14,6 +14,7 @@ export class Battle {
           xp: 0,
           level: 1,
           status: null,
+          isPlayerControlled: true,
         },
         this
       ),
