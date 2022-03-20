@@ -19,7 +19,7 @@ export class Battle {
       ),
       enemy1: new Combatant(
         {
-          ...window.Minions["s001"],
+          ...window.Minions["s002"],
           team: "enemy",
           hp: 50,
           maxHp: 50,

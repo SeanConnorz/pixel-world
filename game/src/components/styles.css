@@ -168,19 +168,57 @@
 
 .Minion {
   position: absolute;
-  transform: scale(0.2);
+  transform: scale(2);
 }
 .Minion[data-team="player"] {
-  bottom: -20px;
-  left: 51px;
+  bottom: 37px;
+  left: 60px;
 }
 .Minion[data-team="enemy"] {
-  top: -20px;
-  right: 100px;
+  top: 48px;
+  right: 112px;
 }
 .Minion[data-active="false"] {
   opacity: 0;
 }
 .Minion[data-active="true"] {
   opacity: 1;
+}
+
+@keyframes battle-damage-blink {
+  to {
+    visibility: hidden;
+  }
+}
+.battle-damage-blink {
+  animation: battle-damage-blink 0.3s steps(2, start) infinite;
+}
+
+@keyframes battle-spin-right {
+  0% {
+    transform: translate3d(0, 0, 0) rotate(0deg) scale(2);
+  }
+  25% {
+    transform: translate3d(155px, -30px, 0) rotate(45deg) scale(2);
+  }
+  100% {
+    transform: translate3d(0, 0, 0) scale(2);
+  }
+}
+.battle-spin-right {
+  animation: battle-spin-right 0.8s;
+}
+@keyframes battle-spin-left {
+  0% {
+    transform: translate3d(0, 0, 0) rotate(0deg) scale(2);
+  }
+  25% {
+    transform: translate3d(-100%, 25%, 0) rotate(45deg) scale(2);
+  }
+  100% {
+    transform: translate3d(0, 0, 0) scale(2);
+  }
+}
+.battle-spin-left {
+  animation: battle-spin-left 0.8s;
 }

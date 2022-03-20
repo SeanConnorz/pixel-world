@@ -6,7 +6,6 @@ export class SubmissionMenu {
   }
 
   decide() {
-    console.log(this.caster);
     this.onComplete({
       action: window.Actions[this.caster.actions[0]],
       target: this.enemy,

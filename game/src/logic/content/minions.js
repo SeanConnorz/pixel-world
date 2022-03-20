@@ -7,9 +7,16 @@ export const minionTypes = () => {
     s001: {
       name: "Slayer",
       type: window.MinionTypes.boy,
-      src: "http://pixelartmaker-data-78746291193.nyc3.digitaloceanspaces.com/image/ea2ceb1a097d69c.png",
+      src: require("../../images/c001.png"),
       logo: "https://upload.wikimedia.org/wikipedia/commons/5/53/Wikimedia-logo.png",
-      actions: ["damage1"],
+      actions: ["saucyStatus", "damage1"],
+    },
+    s002: {
+      name: "npc",
+      type: window.MinionTypes.boy,
+      src: require("../../images/c001.png"),
+      logo: "https://upload.wikimedia.org/wikipedia/commons/5/53/Wikimedia-logo.png",
+      actions: ["saucyStatus", "damage1"],
     },
   };
 };

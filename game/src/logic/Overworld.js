@@ -5,6 +5,7 @@ import { Person } from "./Person.js";
 import { KeyPressListener } from "./KeyPressListener";
 import { minionTypes } from "./content/minions";
 import { loadActions } from "./content/actions";
+import { loadBattleAnimations } from "./battle/BattleAnimations";
 
 export class Overworld {
   constructor(config) {
@@ -72,6 +73,7 @@ export class Overworld {
   // initalizes game
   init() {
     minionTypes();
+    loadBattleAnimations();
     loadActions();
     window.OverworldMaps = {
       DemoRoom: {
