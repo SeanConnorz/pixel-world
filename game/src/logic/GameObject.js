@@ -10,8 +10,7 @@ export class GameObject {
     this.direction = config.direction || "down";
     this.sprite = new Sprite({
       gameObject: this,
-      src:
-        config.src || "../../images/metaverse/characters/boy/SpriteSheet.png",
+      src: config.src || require("../images/characters/boy/SpriteSheet.png"),
     });
 
     this.behaviorLoop = config.behaviorLoop || [];

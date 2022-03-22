@@ -3,8 +3,10 @@ import CharacterSelection from "./CharacterSelection";
 import Game from "./Game";
 
 import { useState } from "react";
-import "./styles.css";
-import "./battle.css";
+import "../styles/styles.css";
+import "../styles/battle.css";
+import "../styles/keyboardMenu.css";
+import "../styles/combatant.css";
 
 export default function Metaverse(props) {
   const { CONTRACT_ADDRESS, currentAccount, connectWallet } = props;

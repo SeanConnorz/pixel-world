@@ -1,0 +1,69 @@
+.game-container canvas {
+  image-rendering: pixelated;
+}
+
+.TextMessage {
+  width: 100%;
+  text-align: center;
+  color: rgb(44, 44, 44);
+  background-color: rgb(223, 223, 223);
+}
+
+.Battle {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  top: 0;
+  background-image: url(../images/DemoBattle.png);
+  background-size: cover;
+  image-rendering: pixelated;
+}
+
+.Battle_hero,
+.Battle_enemy {
+  position: absolute;
+  transform: scale(2);
+  width: 16px;
+  height: 16px;
+  overflow: hidden;
+  background: url(../images/shadow.png) no-repeat no-repeat;
+}
+
+.Battle_hero img,
+.Battle_enemy img {
+  pointer-events: none;
+  object-fit: none;
+  object-position: 0% 0;
+}
+
+.Battle_hero {
+  bottom: 14px;
+  left: 8px;
+}
+
+.Battle_hero img {
+  object-position: 33% 0;
+}
+
+.Battle_enemy {
+  top: 40px;
+  right: 8px;
+}
+
+.Combatant {
+  width: 67px;
+  height: 14px;
+  background: url("../images/combatant-plate.png") no-repeat no-repeat;
+  position: absolute;
+}
+
+.Battle .Combatant {
+  transform: scale(2);
+}
+.Battle .Combatant[data-active="false"] {
+  opacity: 0;
+}
+.Battle .Combatant[data-active="true"] {
+  opacity: 1;
+}

@@ -1,6 +1,7 @@
 import { TextMessage } from "./TextMessage";
 import { utils } from "./utils";
 import { Battle } from "./battle/Battle.js";
+import { transaction } from "../helpers/transaction";
 
 export class OverworldEvent {
   constructor({ map, event }) {

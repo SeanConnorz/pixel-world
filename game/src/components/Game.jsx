@@ -1,6 +1,7 @@
 import { init } from "../logic/init";
-import { useState, useEffect } from "react";
-import "./styles.css";
+import { useEffect } from "react";
+import "../styles/styles.css";
+import { transaction } from "../helpers/transaction";
 
 export default function ConnectWallet(props) {
   const { selectedCharacter, currentAccount } = props;

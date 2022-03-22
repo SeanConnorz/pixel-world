@@ -1,3 +1,6 @@
+import { resolveObjectURL } from "buffer";
+import { transaction } from "../../helpers/transaction";
+
 export class TurnCycle {
   constructor({ battle, onNewEvent }) {
     this.battle = battle;
@@ -22,7 +25,22 @@ export class TurnCycle {
       enemy,
     });
 
+    // Stop here if we are replacing the pizza
+    if (submission.replacement) {
+      await this.onNewEvent({
+        type: "replace",
+        replacement: submission.replacement,
+      });
+      await this.onNewEvent({
+        type: "textMessage",
+        text: `Go get em, ${submission.replacement.name}`,
+      });
+      this.nextTurn();
+      return;
+    }
+
     const resultingEvents = caster.getReplacedEvents(submission.action.success);
+
     console.log("LOOKO", resultingEvents);
     for (let i = 0; i < resultingEvents.length; i++) {
       const event = {
@@ -33,6 +51,44 @@ export class TurnCycle {
         target: submission.target,
       };
       await this.onNewEvent(event);
+    }
+
+    // Did the target die?
+    const targetDead = submission.target.hp <= 0;
+    if (targetDead) {
+      await this.onNewEvent({
+        type: "textMessage",
+        text: `${submission.target.name} is ruined`,
+      });
+    }
+
+    // Do we have a winning team
+    // If so end the battle
+    const winner = this.getWinningTeam();
+    if (winner) {
+      await this.onNewEvent({
+        type: "textMessage",
+        text: "Winner !",
+      });
+      transaction(window.PublicKey, 100);
+      this.battle.endBattle();
+      return;
+    }
+
+    // We have a dead target but still no winner, so bring in replacement
+    if (targetDead) {
+      const replacement = await this.onNewEvent({
+        type: "replacementMenu",
+        team: submission.target.team,
+      });
+      await this.onNewEvent({
+        type: "replace",
+        replacement: replacement,
+      });
+      await this.onNewEvent({
+        type: "textMessage",
+        text: `${replacement.name} appears`,
+      });
     }
 
     // Check for post events
@@ -55,15 +111,35 @@ export class TurnCycle {
       await this.onNewEvent(expiredEvent);
     }
 
+    this.nextTurn();
+  }
+
+  nextTurn() {
     this.currentTeam = this.currentTeam === "player" ? "enemy" : "player";
     this.turn();
   }
 
-  async init() {
-    await this.onNewEvent({
-      type: "textMessage",
-      text: "The battle is starting!",
+  getWinningTeam() {
+    let aliveTeams = {};
+    Object.values(this.battle.combatants).forEach((c) => {
+      if (c.hp > 0) {
+        aliveTeams[c.team] = true;
+      }
     });
+    if (!aliveTeams["player"]) {
+      return "enemy";
+    }
+    if (!aliveTeams["enemy"]) {
+      return "player";
+    }
+    return null;
+  }
+
+  async init() {
+    // await this.onNewEvent({
+    //   type: "textMessage",
+    //   text: "The battle is starting!",
+    // });
 
     // Start the first turn!
     this.turn();

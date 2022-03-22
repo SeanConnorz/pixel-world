@@ -1,56 +1,3 @@
-.game-container canvas {
-  image-rendering: pixelated;
-}
-
-.TextMessage {
-  width: 100%;
-  text-align: center;
-  color: rgb(44, 44, 44);
-  background-color: rgb(223, 223, 223);
-}
-
-.Battle {
-  position: absolute;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  top: 0;
-  background-image: url(../images/DemoBattle.png);
-  background-size: cover;
-  image-rendering: pixelated;
-}
-
-.Battle_hero,
-.Battle_enemy {
-  position: absolute;
-  transform: scale(2);
-  width: 16px;
-  height: 16px;
-  overflow: hidden;
-  background: url(../images/shadow.png) no-repeat no-repeat;
-}
-
-.Battle_hero img,
-.Battle_enemy img {
-  pointer-events: none;
-  object-fit: none;
-  object-position: 0% 0;
-}
-
-.Battle_hero {
-  bottom: 14px;
-  left: 8px;
-}
-
-.Battle_hero img {
-  object-position: 33% 0;
-}
-
-.Battle_enemy {
-  top: 40px;
-  right: 8px;
-}
-
 .Combatant {
   width: 67px;
   height: 14px;
@@ -60,6 +7,7 @@
 
 .Battle .Combatant {
   transform: scale(2);
+  transition: opacity 0.4s;
 }
 .Battle .Combatant[data-active="false"] {
   opacity: 0;
@@ -169,56 +117,21 @@
 .Minion {
   position: absolute;
   transform: scale(2);
+  transition: opacity 0.4s, transform 0.4s;
 }
 .Minion[data-team="player"] {
-  bottom: 37px;
-  left: 60px;
+  bottom: 73px;
+  left: 51px;
 }
 .Minion[data-team="enemy"] {
-  top: 48px;
-  right: 112px;
+  top: 47px;
+  right: 100px;
 }
 .Minion[data-active="false"] {
   opacity: 0;
+  transform: translate3d(0, 16px, 0) scale(2);
 }
 .Minion[data-active="true"] {
   opacity: 1;
-}
-
-@keyframes battle-damage-blink {
-  to {
-    visibility: hidden;
-  }
-}
-.battle-damage-blink {
-  animation: battle-damage-blink 0.3s steps(2, start) infinite;
-}
-
-@keyframes battle-spin-right {
-  0% {
-    transform: translate3d(0, 0, 0) rotate(0deg) scale(2);
-  }
-  25% {
-    transform: translate3d(155px, -30px, 0) rotate(45deg) scale(2);
-  }
-  100% {
-    transform: translate3d(0, 0, 0) scale(2);
-  }
-}
-.battle-spin-right {
-  animation: battle-spin-right 0.8s;
-}
-@keyframes battle-spin-left {
-  0% {
-    transform: translate3d(0, 0, 0) rotate(0deg) scale(2);
-  }
-  25% {
-    transform: translate3d(-100%, 25%, 0) rotate(45deg) scale(2);
-  }
-  100% {
-    transform: translate3d(0, 0, 0) scale(2);
-  }
-}
-.battle-spin-left {
-  animation: battle-spin-left 0.8s;
+  transform: translate3d(0, 0, 0) scale(2);
 }

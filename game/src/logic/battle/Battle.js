@@ -3,7 +3,8 @@ import { TurnCycle } from "./TurnCycle";
 import { BattleEvent } from "./BattleEvent";
 
 export class Battle {
-  constructor() {
+  constructor({ onComplete }) {
+    this.onComplete = onComplete;
     this.combatants = {
       player1: new Combatant(
         {
@@ -18,11 +19,36 @@ export class Battle {
         },
         this
       ),
+      player2: new Combatant(
+        {
+          ...window.Minions["s003"],
+          team: "player",
+          hp: 50,
+          maxHp: 50,
+          xp: 0,
+          level: 1,
+          status: null,
+          isPlayerControlled: true,
+        },
+        this
+      ),
       enemy1: new Combatant(
         {
           ...window.Minions["s002"],
           team: "enemy",
-          hp: 50,
+          hp: 1,
+          maxHp: 50,
+          xp: 20,
+          maxXP: 100,
+          level: 1,
+        },
+        this
+      ),
+      enemy2: new Combatant(
+        {
+          ...window.Minions["s001"],
+          team: "enemy",
+          hp: 1,
           maxHp: 50,
           xp: 20,
           maxXP: 100,
@@ -48,6 +74,11 @@ export class Battle {
         <img src="${"https://storage.opensea.io/files/ad699c038419e64e0370c2cde2e0bb5c.png"}"/>
       </div>
     `;
+  }
+
+  endBattle() {
+    this.element.remove();
+    this.onComplete();
   }
 
   init(container) {

@@ -13,6 +13,7 @@ function App() {
         `Wallet succesfully connected with ${response.publicKey.toString()}`
       );
       setCurrentAccount(response.publicKey.toString());
+      window.PublicKey = response.publicKey.toString();
     }
   };
 
